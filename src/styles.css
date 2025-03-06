@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+:root {
+    --body: #fff;
+    --body-rgb: 35, 38, 38;
+    --body-color: #232626;
+    --body-color-rgb: 255, 255, 255;
+}
+
+html,
+body {
+    font-size: 0.9rem;
+    /* font-family: 'Noto Sans', 'Kanit', serif; */
+    color: var(--body-color);
+    background-color: var(--body);
+}
+
+@media (min-width: 1200px) {
+    body {
+        font-size: 1rem;
+    }
+}

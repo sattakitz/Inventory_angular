@@ -3,6 +3,11 @@
 <!-- product-list.component.html -->
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
+  <div class="flex justify-center">
+    <!-- <button type="button" class="p-4 capitalize" (click)="saveLocalStorage()">save</button>
+    <button type="button" class="p-4 capitalize" (click)="deleteLocalStorage()">delete</button> -->
+  </div>
+
   <div class="flex items-center">
     <h1 class="text-4xl font-medium">Products</h1>
     <div class="flex flex-row ms-auto">
@@ -15,16 +20,17 @@
         Export
       </div>
       <div class="btn flex border-1 bg-blue-500 text-white rounded-md px-4 py-2 ms-2 cursor-pointer"
-        data-dialog-target="modal">
+        data-dialog-target="modal" (click)="openModal()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
         </svg>
         Add products
       </div>
-      <button (click)="openModal()">Open the modal</button>
+      <!-- <button (click)="openModal()">Open the modal</button> -->
     </div>
   </div>
+
 
   <div class="flex flex-row items-center py-3">
     <div class="w-full relative">
@@ -52,36 +58,49 @@
     <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
       <thead>
         <tr>
-          <th class="uppercase" data-priority="1">Product</th>
-          <th class="uppercase" data-priority="2">Price</th>
-          <th class="uppercase" data-priority="3">Quantity</th>
-          <th class="uppercase" data-priority="4">Sales</th>
-          <th class="uppercase" data-priority="5"> </th>
+          <th class="capitalize" data-priority="1">No.</th>
+          <th class="uppercase" data-priority="2">Product</th>
+          <th class="uppercase" data-priority="3">Price</th>
+          <th class="uppercase" data-priority="4">Quantity</th>
+          <th class="uppercase" data-priority="5">Sales</th>
+          <th class="uppercase" data-priority="6"> </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Tiger Nixon</td>
-          <td>System Architect</td>
-          <td>Edinburgh</td>
-          <td>61</td>
+      <tbody class="text-center">
+        <tr *ngFor="let producter of production; let i = index">
+          <td> {{i+1}} </td>
+          <td>{{ producter.product_name}}</td>
+          <td>{{ producter.price}}</td>
+          <td>{{ producter.quantity}}</td>
+          <td>{{ producter.sales}}</td>
           <td class="flex flex-row justify-end">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="size-6 me-2">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="size-6">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-            </svg>
+            <!-- <button type="button" [routerLink]="['/edit', producter.id]"> -->
+            <button type="button" (click)="openEditModal(producter.id)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6 me-2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+              </svg>
+            </button>
+            <button type="button" (click)="deleteRegistration(producter.id)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+              </svg>
+            </button>
           </td>
         </tr>
 
       </tbody>
 
     </table>
+
+    <ul *ngIf="production.length; else noproduct"></ul>
+
+    <ng-template #noproduct>
+      <p>No reservation available.</p>
+    </ng-template>
 
     <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div class="flex flex-1 justify-between sm:hidden">
@@ -143,23 +162,22 @@
       </div>
     </div>
 
-
   </div>
 </div>
 
 <!-- Modal container -->
 <div *ngIf="isModalOpen === true"
-  class="fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50 opacity-50">
+  class="fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-gray-200">
   <div
     class="relative p w-full max-w-xl md:max-w-2xl bg-white rounded-lg shadow  max-h-[90vh] overflow-y-auto mx-4 md:mx-0">
 
     <!-- Modal header -->
     <div class="sticky top-0 flex items-center justify-between p-4 border-b rounded-t bg-white ">
       <h3 class="text-xl font-semibold text-gray-90">
-        Modal
+        Create Product
       </h3>
       <button (click)="closeModal()"
-        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex items-center justify-center">
+        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-4 h-4 flex items-center justify-center">
         <!-- Close SVG -->
         <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -172,8 +190,68 @@
 
     <!-- Modal body -->
     <div class="p-4">
-      <h1>This is my modal</h1>
-      <p>lorem ipsum dolor sit amet.</p>
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-row mb-3">
+          <div class="flex w-full">
+            <label class="form-label capitalize">product_name:</label>
+            <input class="ms-2 w-full p-1 border-1 border-gray-300 rounded-md" type="text"
+              formControlName="product_name" />
+            <small class="text-red-600" *ngIf="
+                productForm.get('product_name')?.invalid &&
+                productForm.get('product_name')?.touched
+              ">
+              product_name is required.
+            </small>
+          </div>
+
+        </div>
+        <div class="flex flex-row mb-3">
+          <div class="flex w-full">
+            <label class="form-label capitalize">price:</label>
+            <input class="ms-2 w-full p-1 border-1 border-gray-300 rounded-md" type="number" formControlName="price" />
+            <small class="text-red-600" *ngIf="
+                productForm.get('price')?.invalid &&
+                productForm.get('price')?.touched
+              ">
+              price is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="flex flex-row mb-3">
+          <div class="flex w-full">
+            <label class="form-label capitalize">quantity:</label>
+            <input class="ms-2 w-full p-1 border-1 border-gray-300 rounded-md" type="number"
+              formControlName="quantity" />
+            <small class="text-red-600" *ngIf="
+                productForm.get('quantity')?.invalid &&
+                productForm.get('quantity')?.touched
+              ">
+              quantity is required.
+            </small>
+          </div>
+
+        </div>
+
+        <div class="flex flex-row mb-3">
+          <div class="flex w-full">
+            <label class="form-label capitalize">sales:</label>
+            <input class="ms-2 w-full p-1 border-1 border-gray-300 rounded-md" type="number" formControlName="sales" />
+            <small class="text-red-600" *ngIf="
+                productForm.get('sales')?.invalid &&
+                productForm.get('sales')?.touched
+              ">
+              sales is required.
+            </small>
+          </div>
+        </div>
+
+        <button class="text-white px-4 py-2 bg-sky-500 border-1 rounded-md" type="submit"
+          [disabled]="productForm.invalid">
+          Submit
+        </button>
+      </form>
+
     </div>
   </div>
 </div>

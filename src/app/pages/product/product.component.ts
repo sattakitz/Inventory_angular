@@ -91,23 +91,9 @@ export class ProductComponent implements OnInit {
 
   openEditModal(id: any): void {
     this.isModalOpen = true;
-    
+
     this.selectedItem = id;
 
-    this.productForm = this.formBuilder.group({
-      product_name: ['', Validators.required],
-      price: ['', Validators.required],
-      quantity: ['', Validators.required],
-      sales: ['', Validators.required],
-    });
-
-    let edit = this.activatedRoute.snapshot.paramMap.get('id');
-
-    if (edit) {
-      let production = this.productService.getProductions(id);
-
-      if (production) this.productForm.patchValue(production);
-    }
   }
 
   openModal() {

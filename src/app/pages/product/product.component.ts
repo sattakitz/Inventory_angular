@@ -44,7 +44,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.production = this.productService.getProductions();
+    this.production = this.productService.getProductrations();
 
     this.productForm = this.formBuilder.group({
       product_name: ['', Validators.required],
@@ -60,7 +60,6 @@ export class ProductComponent implements OnInit {
       if (production) this.productForm.patchValue(production);
     }
 
-    this.production = this.productService.getProductrations();
 
   }
 
@@ -90,12 +89,25 @@ export class ProductComponent implements OnInit {
 
   isModalOpen: boolean = false;
 
-  openEditModal(id: any): void  {
+  openEditModal(id: any): void {
     this.isModalOpen = true;
+    
     this.selectedItem = id;
-    this.productForm.patchValue(id);
 
+    this.productForm = this.formBuilder.group({
+      product_name: ['', Validators.required],
+      price: ['', Validators.required],
+      quantity: ['', Validators.required],
+      sales: ['', Validators.required],
+    });
 
+    let edit = this.activatedRoute.snapshot.paramMap.get('id');
+
+    if (edit) {
+      let production = this.productService.getProductions(id);
+
+      if (production) this.productForm.patchValue(production);
+    }
   }
 
   openModal() {

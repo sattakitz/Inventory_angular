@@ -2,6 +2,67 @@
 
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-    <p>product-edit works!</p>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-row mb-3">
+            <div class="flex w-full">
+                <label class="form-label capitalize">product_name:</label>
+                <input class="ms-2 w-full p-1 border-1 border-gray-300 rounded-md" type="text"
+                    formControlName="product_name" />
+                <small class="text-red-600" *ngIf="
+                productForm.get('product_name')?.invalid &&
+                productForm.get('product_name')?.touched
+              ">
+                    product_name is required.
+                </small>
+            </div>
 
+        </div>
+        <div class="flex flex-row mb-3">
+            <div class="flex w-full">
+                <label class="form-label capitalize">price:</label>
+                <input class="ms-2 w-full p-1 border-1 border-gray-300 rounded-md" type="number"
+                    formControlName="price" />
+                <small class="text-red-600" *ngIf="
+                productForm.get('price')?.invalid &&
+                productForm.get('price')?.touched
+              ">
+                    price is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="flex flex-row mb-3">
+            <div class="flex w-full">
+                <label class="form-label capitalize">quantity:</label>
+                <input class="ms-2 w-full p-1 border-1 border-gray-300 rounded-md" type="number"
+                    formControlName="quantity" />
+                <small class="text-red-600" *ngIf="
+                productForm.get('quantity')?.invalid &&
+                productForm.get('quantity')?.touched
+              ">
+                    quantity is required.
+                </small>
+            </div>
+
+        </div>
+
+        <div class="flex flex-row mb-3">
+            <div class="flex w-full">
+                <label class="form-label capitalize">sales:</label>
+                <input class="ms-2 w-full p-1 border-1 border-gray-300 rounded-md" type="number"
+                    formControlName="sales" />
+                <small class="text-red-600" *ngIf="
+                productForm.get('sales')?.invalid &&
+                productForm.get('sales')?.touched
+              ">
+                    sales is required.
+                </small>
+            </div>
+        </div>
+
+        <button class="text-white px-4 py-2 bg-sky-500 border-1 rounded-md" type="submit"
+            [disabled]="productForm.invalid">
+            Save
+        </button>
+    </form>
 </div>

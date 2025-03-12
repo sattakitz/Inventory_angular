@@ -13,7 +13,7 @@ import { ProductDetails } from '../../shared/models/product.detail';
     NavbarComponent,
     CommonModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
   ],
   standalone: true,
   templateUrl: './product.component.html',

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ProductService } from '../product.service';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductDetails } from '../../shared/models/product.detail';
+import { empty, EMPTY } from 'rxjs';
 
 
 @Component({
@@ -21,6 +22,7 @@ import { ProductDetails } from '../../shared/models/product.detail';
 })
 
 export class ProductComponent implements OnInit {
+  isEditMode = false;
 
   production: ProductDetails[] = [];
 
@@ -36,6 +38,7 @@ export class ProductComponent implements OnInit {
 
   ) {
     this.productForm = this.formBuilder.group({
+      id: '',
       product_name: ['', Validators.required],
       price: ['', Validators.required],
       quantity: ['', Validators.required],
@@ -47,6 +50,7 @@ export class ProductComponent implements OnInit {
     this.production = this.productService.getProductrations();
 
     this.productForm = this.formBuilder.group({
+      id: '',
       product_name: ['', Validators.required],
       price: ['', Validators.required],
       quantity: ['', Validators.required],
@@ -67,41 +71,52 @@ export class ProductComponent implements OnInit {
     if (this.productForm.valid) {
       let production: ProductDetails = this.productForm.value;
 
-      let id = this.activatedRoute.snapshot.paramMap.get('id');
+      let id = this.activatedRoute.snapshot.paramMap.get('id') || this.productForm.value.id;
 
       if (id) {
-        // Update
+        // Update Product
         this.productService.updateProducttion(id, production);
+        this.closeModal();
+        window.location.reload();
       } else {
-        // New
+        // New Product
         this.productService.addProducttion(production);
+        this.closeModal();
+        window.location.reload();
       }
 
       // this.router.navigate(['/product/']);
-      this.closeModal();
-      window.location.reload();
+      // this.closeModal();
+      // window.location.reload();
     }
   }
 
   deleteRegistration(id: string) {
     this.productService.deleteProductration(id);
+
   }
 
   isModalOpen: boolean = false;
 
   openEditModal(id: any): void {
+    this.isEditMode = true;
     this.isModalOpen = true;
-
-    this.selectedItem = id;
+    let production = this.productService.getProductions(id);
+    if (production) {
+      this.productForm.patchValue(production);
+      console.log(production);
+    }
 
   }
 
   openModal() {
     this.isModalOpen = true;
+    this.isEditMode = false;
   }
 
   closeModal() {
     this.isModalOpen = false;
+    this.productForm.reset();
   }
 
   // saveLocalStorage() {

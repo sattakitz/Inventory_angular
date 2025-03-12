@@ -74,8 +74,8 @@
           <td>{{ producter.quantity}}</td>
           <td>{{ producter.sales}}</td>
           <td class="flex flex-row justify-end">
-            <button type="button" [routerLink]="['/edit', producter.id]">
-              <!-- <button type="button" (click)="openEditModal(producter.id)"> -->
+            <!-- <button type="button" [routerLink]="['/edit', producter.id]"> -->
+              <button type="button" (click)="openEditModal(producter.id)">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6 me-2">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -174,7 +174,7 @@
     <!-- Modal header -->
     <div class="sticky top-0 flex items-center justify-between p-4 border-b rounded-t bg-white ">
       <h3 class="text-xl font-semibold text-gray-90">
-        Create Product
+         {{ isEditMode ? 'Edit Product' : 'Create Product' }}
       </h3>
       <button (click)="closeModal()"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-4 h-4 flex items-center justify-center">
@@ -248,7 +248,7 @@
 
         <button class="text-white px-4 py-2 bg-sky-500 border-1 rounded-md" type="submit"
           [disabled]="productForm.invalid">
-          Save
+          {{ isEditMode ? 'Edit Product' : 'Save Product' }}
         </button>
       </form>
 

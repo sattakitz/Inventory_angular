@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+  <p class="my-5">learning works!</p>
+
+  <div class="border-1 my-5" [contentEditable]="isEditable"></div>
+
+  <button (click)="greet()" class="bg-amber-500 p-2 my-5">button</button>
+
+  <section class="my-5" (mouseover)="onMouseOver()">
+    There's a secret message for you, hover to reveal 👀
+    {{ message }}
+  </section>
+
+  <div class="flex my-5">
+    @for (user of users; track user.id) {
+    <p class="mx-2"> {{ user.name }} </p> ||
+    }
+  </div>
+
+  <app-user occupation="Angular Developer"></app-user>
+
+  
+
+</div>

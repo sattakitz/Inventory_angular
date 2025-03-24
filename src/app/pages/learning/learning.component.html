@@ -21,6 +21,19 @@
 
   <app-user occupation="Angular Developer"></app-user>
 
-  
+  <div class="my-5">
+    <span>มา 4 จ่าย 3 </span>
+    <div>
+      <input type="text" #priBuffetInput placeholder="price" class="border-1">
+      <button class="border-neutral-50 bg-amber-200 border-1"
+        (click)="calBuffet(priBuffetInput.value)">calculate</button>
+    </div>
+    <span>{{value | currency : 'THB' : 'code' }} : result</span>
+  </div>
+
+  <app-action-bar (numberChange)="testNumberChange($event)" [step]="5"></app-action-bar>
+  <app-action-bar (numberChange)="testNumberChange($event)"[step]="20"></app-action-bar>
+  <button type="button" class="btn" (click)="testclick()">testEventBinding</button>
+
 
 </div>

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
-import { ProductDetails } from '../../shared/models/product.detail';
+import { ProductDetails } from '../../interfaces/product.detail';
 import { empty, EMPTY } from 'rxjs';
 
 
@@ -13,9 +13,8 @@ import { empty, EMPTY } from 'rxjs';
   imports: [
     NavbarComponent,
     CommonModule,
-    ReactiveFormsModule,
-    RouterLink,
-  ],
+    ReactiveFormsModule
+],
   standalone: true,
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'

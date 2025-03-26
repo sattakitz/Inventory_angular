@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <h1>Basic Component</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm">
+            <app-com1 [message]="message">Component 1</app-com1>
+
+        </div>
+        <div class="col-sm">
+            <app-com2 (onMessage)="onMessage($event)">Component 2</app-com2>
+        </div>
+    </div>
+
+    <hr>
+    <div class="Directive">
+        Directive
+    </div>
+    
+</div>

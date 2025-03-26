@@ -3,9 +3,8 @@ import NavbarComponent from "../../layouts/navbar/navbar.component";
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../product.service';
-import { Router, ActivatedRoute, RouterLink } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductDetails } from '../../interfaces/product.detail';
-import { empty, EMPTY } from 'rxjs';
 
 
 @Component({

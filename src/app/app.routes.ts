@@ -5,6 +5,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductComponent } from './pages/product/product.component';
 import { LearningComponent } from './pages/learning/learning.component';
 import { BindingDataComponent } from './pages/binding-data/binding-data.component';
+import { ComponentComponent } from './pages/component/component.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
@@ -12,6 +13,7 @@ export const routes: Routes = [
     { path: 'product', component: ProductComponent },
     { path: 'learning', component: LearningComponent },
     { path: 'binding-data', component: BindingDataComponent },
+    { path: 'component', component: ComponentComponent },
 
     { path: '**', redirectTo: '', pathMatch: 'full' },
 

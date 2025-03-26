@@ -1,0 +1,9 @@
+<h3>
+    <ng-content></ng-content>
+</h3>
+<form class="form-inline">
+    <input type="text" class="form-control mb-2 mr-sm-2" #input>
+    <button type="submit" class="btn btn-primary mb-2" (click)="onSendData($event)">
+        Send
+    </button>
+</form>

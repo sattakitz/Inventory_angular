@@ -4,8 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Com1Component } from './pages/component/com-1/com-1.component';
+import { Com1Component } from './components/com-1/com-1.component';
 import { CommonModule } from '@angular/common';
+import { Pipe1Pipe } from './pipes/pipe1.pipe';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
         HttpClientModule,
         CommonModule,
         Com1Component,
+        Pipe1Pipe
     ],
     providers: [],
     exports: [

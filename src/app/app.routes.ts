@@ -5,7 +5,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductComponent } from './pages/product/product.component';
 import { LearningComponent } from './pages/learning/learning.component';
 import { BindingDataComponent } from './pages/binding-data/binding-data.component';
-import { ComponentComponent } from './pages/component/component.component';
+import { ComponentComponent } from './components/component.component';
+import { PipeComponent } from './pages/pipe/pipe.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
@@ -14,6 +15,7 @@ export const routes: Routes = [
     { path: 'learning', component: LearningComponent },
     { path: 'binding-data', component: BindingDataComponent },
     { path: 'component', component: ComponentComponent },
+    { path: 'pipe', component: PipeComponent },
 
     { path: '**', redirectTo: '', pathMatch: 'full' },
 

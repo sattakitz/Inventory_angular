@@ -1,10 +1,10 @@
 import { Component, Injectable } from '@angular/core';
-import NavbarComponent from "../../layouts/navbar/navbar.component";
+import NavbarComponent from "../layouts/navbar/navbar.component";
 import { Com1Component } from './com-1/com-1.component';
 import { Com2Component } from './com-2/com-2.component';
-import { Directive1Directive } from '../../directives/directive1.directive';
+import { Directive1Directive } from '../directives/directive1.directive';
 import { CommonModule } from '@angular/common';
-import { Directive2Directive } from '../../directives/directive2.directive';
+import { Directive2Directive } from '../directives/directive2.directive';
 
 @Component({
   selector: 'app-component',

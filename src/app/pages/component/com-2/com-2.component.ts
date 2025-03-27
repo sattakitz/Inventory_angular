@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, output } from '@angular/core';
 
 @Component({
     selector: 'app-com2',
@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 })
 export class Com2Component implements OnInit {
 
+    @Output('onClose') onClose = new EventEmitter<boolean>();
     @Output('onMessage') onMessage = new EventEmitter<string>();
     @ViewChild('input') inputElementRef!: ElementRef;
 

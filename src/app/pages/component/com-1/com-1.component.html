@@ -2,4 +2,27 @@
     <ng-content></ng-content>
 
 </h3>
-<p>{{ message }}</p>
+<!-- <p>{{ message }}</p> -->
+<!-- <div>
+    <span [ngSwitch]="messages">
+        <p *ngSwitchCase="'a'"> angular </p>
+        <p *ngSwitchCase="'v'"> vue </p>
+        <p *ngSwitchCase="'r'"> react </p>
+        <p *ngSwitchDefault> unknown </p>
+    </span>
+</div> -->
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>messages</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of messages; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item }}</td>
+        </tr>
+    </tbody>
+</table>

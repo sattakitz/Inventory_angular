@@ -1,21 +1,55 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <h1>Basic Component</h1>
+    <h1 appDirective1>Basic Component</h1>
     <hr>
-    <div class="row">
+    <div class="form-group" *ngIf="isShowComponent == false">
+        <button type="button" class="btn btn-primary" (click)="isShowComponent = true">
+            Show component
+        </button>
+    </div>
+
+    <div class="row" *ngIf="isShowComponent">
         <div class="col-sm">
-            <app-com1 [message]="message">Component 1</app-com1>
+            <app-com1 [messages]="messages">Component 1</app-com1>
 
         </div>
         <div class="col-sm">
-            <app-com2 (onMessage)="onMessage($event)">Component 2</app-com2>
+            <app-com2 (onClose)="isShowComponent= $event" (onMessage)="onMessage($event)">Component 2</app-com2>
         </div>
     </div>
 
     <hr>
-    <div class="Directive">
-        Directive
+    <!-- <div *ngIf="isShow" appDirective1 appDirective2 class="fs-4"> Directive </div> -->
+    <!-- <span [ngSwitch]="feLang">
+        <p *ngSwitchCase="'a'"> angular </p>
+        <p *ngSwitchCase="'v'"> vue </p>
+        <p *ngSwitchCase="'r'"> react </p>
+        <p *ngSwitchDefault> unknown </p>
+    </span> -->
+
+    <!-- ! Directive -->
+    <!-- <div class="form-group">
+        <button (click)="onLoading()" type="button" class="btn btn-secondary">
+            Loading List
+        </button>
     </div>
-    
+
+    <ul *ngIf="isShow; else myTemplate">
+        <ng-container *ngFor="let item of languageItems; let i = index">
+            <li *ngIf="item != 'React'"> {{ i + 1 }}. Lang for Lang is : {{ item }} </li>
+            <li *ngIf="item != 'React'">Hello : {{ item }} </li>
+        </ng-container>
+    </ul>
+
+    <ng-template #myTemplate>
+        <h3>Loading...</h3>
+        <p>.....Please wait......</p>
+    </ng-template> -->
+
+    <hr>
+
+    <h1 *appDirective2="3">Create Tempalte Directive</h1>
+
+
 </div>

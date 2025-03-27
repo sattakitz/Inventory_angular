@@ -1,13 +1,18 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
 
 @Component({
+  standalone: true,
   selector: 'app-com1',
+  imports: [
+    CommonModule,
+  ],
   templateUrl: './com-1.component.html',
   styleUrls: ['./com-1.component.css']
 })
 export class Com1Component implements OnInit, OnChanges {
 
-  @Input('message') message: string = 'This is component 1';
+  @Input('messages') messages: string[] = [];
 
   constructor() {
 

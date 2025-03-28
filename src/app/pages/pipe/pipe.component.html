@@ -1,33 +1,73 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <h1 appDirective1>Basic Pipe</h1>
-    <hr>
+  <h1 appDirective1>Basic Pipe</h1>
+  <hr>
 
-    <ol>
-        <li *ngFor="let item of messages; let i = index">
-            {{ i + 1 }}. {{ item | pipe1 }}
-        </li>
-    </ol>
+  <ol>
+    <li *ngFor="let item of messages; let i = index">
+      {{ i + 1 }}. {{ item | pipe1 }}
+    </li>
+  </ol>
 
-    <div class="">Date item : {{dataItem | date : "fullDate" : "uppercase" }}</div>
-    <div>Number item : {{numberItem | number : "1.2-2" }}</div>
-    <hr>
+  <div class="">Date item : {{dataItem | date : "fullDate" : "uppercase" }}</div>
+  <div>Number item : {{numberItem | number : "1.2-2" }}</div>
+  <hr>
 
-    <div class="form-group" *ngIf="isShowWorkshop == false">
-        <button type="button" class="btn btn-primary" (click)="isShowWorkshop = true">
-            Show WorkShop
-        </button>
+  <div class="mb-3" *ngIf="isShowWorkshop == false">
+    <button type="button" class="btn btn-primary" (click)="isShowWorkshop = true">
+      Show WorkShop
+    </button>
+  </div>
+
+  <div class="row" *ngIf="isShowWorkshop">
+    <div class="col-sm">
+      <app-com1 [messages]="messages">Component 1</app-com1>
+
     </div>
-
-    <div class="row" *ngIf="isShowWorkshop">
-        <div class="col-sm">
-            <app-com1 [messages]="messages">Component 1</app-com1>
-
-        </div>
-        <div class="col-sm">
-            <app-com2 (onClose)="isShowWorkshop= $event" (onMessage)="onMessage($event)">Component 2</app-com2>
-        </div>
+    <div class="col-sm">
+      <app-com2 (onClose)="isShowWorkshop= $event" (onMessage)="onMessage($event)">Component 2</app-com2>
     </div>
+  </div>
 
+  <div class="card">
+    <div class="card-body">
+      @if (string) {
+      <div class=""> string: {{string}} </div>
+      }
+      @if (emptyString) {
+      <div class=""> emptyString: {{emptyString}} </div>
+      }
+      @if (number) {
+      <div class=""> number: {{number}} </div>
+      }
+      @if (zero) {
+      <div class=""> zero: {{zero}} </div>
+      }
+      @if (minusNumber) {
+      <div class=""> minusNumber: {{minusNumber}} </div>
+      }
+      @if (arrays) {
+      <div class=""> arrays: {{arrays}} </div>
+      }
+      @if (emptyArrays) {
+      <div class=""> emptyArrays: {{emptyArrays}} </div>
+      }
+      @if (emptyArrays.length > 0) {
+      <div class=""> emptyArrays.length: {{emptyArrays.length}} </div>
+      }
+      <div class=""> object: {{object}}
+        <pre>{{object | json}}</pre>
+        @for (item of object | keyvalue; track $index) {
+        <div class=""> key: {{item.key}}, value: {{item.value}} </div>
+        }
+      </div>
+      @if (nullObject) {
+      <div class=""> nullObject: {{nullObject}} </div>
+      }
+      @if (undefinedObject) {
+      <div class=""> undefinedObject: {{undefinedObject}} </div>
+      }
+    </div>
+  </div>
 </div>

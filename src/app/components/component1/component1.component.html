@@ -1,0 +1,34 @@
+<div class="card bg-light" *ngIf="formData">
+    <h3 class="card-header">COM 1</h3>
+    <div class="card-body text-start">
+        <table>
+            <tbody>
+                <tr>
+                    <th>เพศ</th>
+                    <td>:</td>
+                    <td>{{ formData?.sex }}</td>
+                </tr>
+
+                <tr>
+                    <th>ชื่อ</th>
+                    <td>:</td>
+                    <td>{{ formData?.firstname }}</td>
+                </tr>
+
+                <tr>
+                    <th>นามสกุล</th>
+                    <td>:</td>
+                    <td>{{ formData?.lastname }}</td>
+                </tr>
+
+                <tr class="">
+                    <th>เบอร์โทร</th>
+                    <td>:</td>
+                    <td class="text-start ps-2">
+                        <div *ngFor="let phone of formData?.phones">{{ phone }}</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+    <h1>Workshop Form</h1>
+    <p>สร้างและแสดงข้อมูลจาก Form</p>
+    <hr>
+
+    <div class="row">
+        <div class="col-sm">
+            <app-component1 [formData]="formData"></app-component1>
+        </div>
+        <div class="col-sm">
+            <app-component2 (onSubmitChange)="formData = $event"></app-component2>
+        </div>
+    </div>
+</div>

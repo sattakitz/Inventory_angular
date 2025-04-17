@@ -1,0 +1,68 @@
+<div class="card">
+    <div class="card-header">
+        <h3>com 2</h3>
+    </div>
+    <form (submit)="onSubmit()" [formGroup]="form">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <label for="" class="me-2">เพศ : </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="ผู้ชาย" id="man" formControlName="sex">
+                        <label class="form-check-label" for="man">
+                            ผู้ชาย
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="ผู้หญิง" id="women" formControlName="sex">
+                        <label class="form-check-label" for="women">
+                            ผู้หญิง
+                        </label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="">ชื่อ :</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" formControlName="firstname" placeholder="ชื่อ"
+                            aria-label="First name">
+                    </div>
+                    <div *ngIf="form.get('firstname').invalid && form.get('firstname').touched" class="text-danger">
+                        Invalid First Name
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="">นามสกุล :</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" formControlName="lastname" placeholder="นามสกุล"
+                            aria-label="last name">
+                    </div>
+                    <div *ngIf="form.get('lastname').invalid && form.get('lastname').touched" class="text-danger">
+                        Invalid lastname Name
+                    </div>
+
+                </div>
+                <div class="col-12">
+                    <label for="">เบอร์โทร :</label>
+                    <div class="input-group" *ngFor="let control of getPhonesForm.controls">
+                        <input type="text" class="form-control" [formControl]="control">
+                    </div>
+                    <div class="add-remove-link float-right">
+                        <a (click)="onAddPhone()" class="text-primary"><u><small>เพิ่มเบอร์โทร</small></u></a>
+                        <span class="text-muted"> | </span>
+                        <a (click)="onRemovePhone()" class="text-danger"><u><small>ลบเบอร์โทร</small></u></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary w-100">บันทึก ข้อมูล</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger w-100">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
